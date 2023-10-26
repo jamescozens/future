@@ -24,6 +24,15 @@ class Person:
             self.name = args[0]
             self.age = args[1]
 
+    def __add__(self, other):
+        if isinstance(other, Person):
+            return Person(  ("" if self.name is None else self.name) + " " + ("" if other.name is None else other.name), \
+                            ( None if (self.age is None or other.age is None) else self.age + other.age) )
+        else:
+            # If 'other' is not a Person object, raise an exception
+            raise TypeError("You can only add Person objects together")
+
+
     def __str__(self):
         return f"MyClass instance with value: {self.name} and I am {self.age} years old"
 
@@ -33,5 +42,7 @@ class Person:
 person1 = Person("John", 30)
 print(person1)
 
-person1 = Person("Jim")
+person2 = Person("Jim")
 print(person1)
+
+print(person1 + person2)

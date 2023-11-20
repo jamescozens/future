@@ -4,7 +4,37 @@
 # from jimpack import my_variable
 import jimpack.one as x
 import jimmod as j
+import logging
+import sqlite3
 
+
+def function1():
+    x = 1
+    def function2() -> int:
+        return inc()
+
+    def inc() -> int:
+        nonlocal x
+        x += 2
+        return x
+
+    return function2
+
+f = function1()
+print(f())
+print(f())
+print(f())
+
+logger = logging.getLogger(__name__)
+
+con = sqlite3.connect(":memory:")
+con.execute("CREATE TABLE IF NOT EXISTS A (A INT)")
+res = con.execute("INSERT INTO A (A) VALUES ('DDDDD')")
+con.commit()
+res = con.execute("SELECT * FROM A")
+print(res.fetchall())
+
+con.close()
 
 
 def main():
@@ -23,5 +53,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

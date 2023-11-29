@@ -33,5 +33,3 @@ def test(*args):
 test()
 stringJoin("aaaa", "bbbbb", "ccc", "dddddd", "eeeeeee")
 raiseException()
-
-

@@ -6,7 +6,6 @@ from datetime import datetime, timedelta
 from inspect import stack
 from enum import IntEnum
 
-
 # Constants - Logging levels
 class Level(IntEnum):
     DEBUG: int = logging.DEBUG
@@ -21,6 +20,9 @@ class LogEntryType(IntEnum):
     EXIT: int = 2
     PERF: int = 3
     STD: int = 0
+
+# Constants
+LOGGING_CONFIG_DEFAULT = 'logger.yaml'
 
 # Regexs to scan for and cleanse sensitive data in log messages
 _sensitiveDataPattern = {
@@ -37,6 +39,7 @@ __init = False
 # Lambda functions
 functionName = lambda: stack()[1][3]
 
+
 def getLogger(name: str) -> Logger:
     if (name is None):
         name = "__main__"
@@ -44,7 +47,7 @@ def getLogger(name: str) -> Logger:
     global __init
     if (__init is False):
         # Load the config file
-        with open('./logger.yaml', 'rt') as f:
+        with open(LOGGING_CONFIG_DEFAULT, 'rt') as f:
             config = yaml.safe_load(f.read())
 
         # Configure the logging module with the config file
@@ -128,11 +131,10 @@ def logMsg(func_name: str = '',
     return result
 
 
-
-
 """
 # TODOs
 1. Add functions to create standard formatted log entries for the different type : entry , exit etc
 2. filter for and clean sensitive data
 """
 print(logMsg('aaaaa', LogEntryType.ENTRY,'dec enter',999, 'dfdfs' , '4111111111111111 sadgsdgjd  jim@dfdsf.com sddfsdfsd 121.34.121.123',None, None, None))
+

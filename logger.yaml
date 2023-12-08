@@ -21,18 +21,13 @@ handlers:
         mode: a
 
 loggers:
-    __main__:
-        level: DEBUG
-        handlers: [console]
-        propagate: no
-
     util:
         level: DEBUG
         handlers: [console]
         propagate: no
 
     development:
-        level: DEBUG
+        level: ERROR
         handlers: [console]
         propagate: no
 

@@ -3,7 +3,7 @@ disable_existing_loggers: False
 
 formatters:
     simple:
-        format: '%(asctime)s|%(thread)d|%(name)s|%(levelname)s|%(message)s'
+        format: '%(asctime)s|%(name)s|%(levelname)s|%(message)s'
         datefmt: '%Y-%m-%d %H:%M:%S'
 
 handlers:
@@ -15,28 +15,15 @@ handlers:
 
     file:
         class: logging.FileHandler
-        level: DEBUG
+        level: INFO
         formatter: simple
-        filename: ./logs/myapp.log
+        filename: myapp.log
         mode: a
-
-    rfile:
-        class: logging.handlers.TimedRotatingFileHandler
-        level: DEBUG
-        formatter: simple
-        when: D
-        backupCount: 0
-        filename: ./logs/future.log
 
 loggers:
     util:
         level: DEBUG
-        handlers: [console, rfile]
-        propagate: no
-
-    pack2:
-        level: DEBUG
-        handlers: [console, rfile]
+        handlers: [console]
         propagate: no
 
     development:
@@ -46,16 +33,16 @@ loggers:
 
     staging:
         level: ERROR
-        handlers: [console, rfile]
+        handlers: [console, file]
         propagate: no
 
     production:
         level: WARNING
-        handlers: [rfile]
+        handlers: [file]
         propagate: no
 
 root:
     level: DEBUG
-    handlers: [console, rfile]
+    handlers: [console]
 
 

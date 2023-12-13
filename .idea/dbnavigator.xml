@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a0de336d-cc64-4388-8a22-a366b1ebd891">
-      <console name="local - future" type="STANDARD" schema="public" session="Session 1"><![CDATA[SET search_path TO dev1,public;
+      <console name="local - future" type="STANDARD" schema="public" session="Main"><![CDATA[SET search_path TO dev1,public;
 commit ;
 
 SHOW SEARCH_PATH;
@@ -27,9 +27,7 @@ SELECT * FROM dev1.test1]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="a0de336d-cc64-4388-8a22-a366b1ebd891" object-ref="schemas/dev1/tables/test1" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="a0de336d-cc64-4388-8a22-a366b1ebd891">
